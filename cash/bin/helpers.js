@@ -1,3 +1,7 @@
+/**
+ * helpers.js, what's happen in the shell
+ */
+
 /*eslint-disable no-process-exit*/
 const chalk = require('chalk');
 const updateNotifier = require('update-notifier');
@@ -8,6 +12,7 @@ const config = new Conf();
 
 updateNotifier({pkg}).notify();
 
+/*function to save default currencies */
 const saveCurrencies = argv => {
   config.set('defaultFrom', argv[1] || config.get('defaultFrom', 'USD'));
   config.set(
@@ -20,11 +25,13 @@ const saveCurrencies = argv => {
   process.exit(1);
 };
 
+/*function to print the package version */
 const version = () => {
   console.log(pkg.version);
   process.exit(1);
 };
 
+/*function to print instructions */
 const help = () => {
   console.log(`
 Usage:
@@ -57,6 +64,7 @@ Examples:
   process.exit(1);
 };
 
+/*function to manage inputs */
 const helpers = argv => {
   // Version
   if (argv.indexOf('--version') !== - 1 || argv.indexOf('-v') !== - 1) {
